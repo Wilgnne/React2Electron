@@ -1,0 +1,39 @@
+{
+  "name": "React2Electron",
+  "version": "0.0.1",
+  "description": "Generating Electron application through a ReactJS repository",
+  "repository": "https://github.com/Wilgnne/React2Electron.git",
+  "author": "Wilgnne <w.khawanbarbosa@gmail.com>",
+  "license": "MIT",
+  "main": "public/electron.js",
+  "homepage": "./",
+  "scripts": {
+    "react-start": "cd web && yarn start && cd ../",
+    "react-build": "cd web && yarn build && cd ../",
+    "react-test": "cd web && yarn test --env=jsdom && cd ../",
+    "react-eject": "cd web && yarn eject && cd ../",
+    "electron-build": "electron-builder",
+    "release": "yarn react-build && electron-builder --publish=always",
+    "build": "yarn react-build && yarn electron-build",
+    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "dependencies": {
+    "cross-env": "^7.0.2",
+    "electron-is-dev": "^1.1.0",
+    "electron-serve": "^0.4.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "electron": "^8.1.0",
+    "electron-builder": "^22.4.0",
+    "wait-on": "^4.0.1"
+  },
+  "build": {
+    "files": [
+      "build/",
+      "public/",
+      "!**/*.sh",
+      "!**/*.bat"
+    ]
+  }
+}
