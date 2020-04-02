@@ -1,5 +1,5 @@
 {
-  "name": "React2Electron",
+  "name": "react2electron",
   "version": "0.0.1",
   "description": "Generating Electron application through a ReactJS repository",
   "repository": "https://github.com/Wilgnne/React2Electron.git",
@@ -8,14 +8,14 @@
   "main": "public/electron.js",
   "homepage": "./",
   "scripts": {
-    "react-start": "cd web && yarn start && cd ../",
-    "react-build": "cd web && yarn build && cd ../",
-    "react-test": "cd web && yarn test --env=jsdom && cd ../",
-    "react-eject": "cd web && yarn eject && cd ../",
+    "react-start": "cd web && npm run start && cd ../",
+    "react-build": "cd web && npm run build && cd ../",
+    "react-test": "cd web && npm run test --env=jsdom && cd ../",
+    "react-eject": "cd web && npm run eject && cd ../",
     "electron-build": "electron-builder",
-    "release": "yarn react-build && electron-builder --publish=always",
-    "build": "yarn react-build && yarn electron-build",
-    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
+    "release": "npm run react-build && electron-builder --publish=always",
+    "build": "npm run react-build && yarn electron-build",
+    "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "dependencies": {
     "cross-env": "^7.0.2",
